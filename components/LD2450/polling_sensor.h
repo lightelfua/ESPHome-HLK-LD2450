@@ -14,15 +14,15 @@ namespace esphome::ld2450
     public:
         void setup() override
         {
-            // Determine unit conversion
-            if (!this->get_unit_of_measurement().empty())
-            {
-            auto unit = this->get_unit_of_measurement();
-            if (unit == "m")
+            const std::string unit = this->get_unit_of_measurement();
+
+            if (unit == "m") {
                 conversion_factor_ = 0.001f;
-            else if (unit == "cm")
+            } else if (unit == "cm") {
                 conversion_factor_ = 0.1f;
-            }
+            } else {
+                conversion_factor_ = 1.0f;  // fallback
+          }
         }
 
         void update() override
