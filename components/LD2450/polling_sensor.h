@@ -14,7 +14,7 @@ namespace esphome::ld2450
     public:
         void setup() override
         {
-            const std::string unit = this->get_unit_of_measurement();
+            const std::string unit = this->get_unit_of_measurement_ref();
 
             if (unit == "m") {
                 conversion_factor_ = 0.001f;
