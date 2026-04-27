@@ -27,8 +27,12 @@ namespace esphome::ld2450
 
         void update() override
         {
-            if (raw_state != value_ && !(std::isnan(raw_state) && std::isnan(value_)))
+            float current = this->get_raw_state();
+
+            if (current != value_ &&
+                !(std::isnan(current) && std::isnan(value_))) {
                 publish_state(value_);
+            }
         }
 
         /**
